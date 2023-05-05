@@ -1,0 +1,35 @@
+<mat-card>
+    <mat-card-header><mat-toolbar >Employee Form</mat-toolbar></mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <form [formGroup]="EmployeeForm" (ngSubmit)="create()">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="FirstName" formControlName="firstName" />
+        </mat-form-field><mat-divider [vertical]="true"></mat-divider>
+        <mat-form-field appearance="outline">
+          <mat-label>lastName</mat-label>
+          <input
+            matInput
+            placeholder="lastName"
+            formControlName="lastName"
+          />
+        </mat-form-field>
+        <mat-divider [vertical]="true"></mat-divider>
+        <mat-form-field appearance="outline">
+          <mat-label>phoneNumber</mat-label>
+          <input matInput placeholder="Contact No." formControlName="phoneNumber" />
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-form-field appearance="outline">
+          <mat-label>EmailId</mat-label>
+          <input matInput placeholder="Email Id." formControlName="emailId" />
+        </mat-form-field><mat-divider [vertical]="true"></mat-divider>
+       
+        <button type="submit" mat-raised-button color="accent">{{Create}}</button>
+        &nbsp;&nbsp;
+        <button  mat-raised-button color="accent" (click)="cancel()">Cancel</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

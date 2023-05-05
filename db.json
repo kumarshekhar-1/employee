@@ -1,0 +1,105 @@
+{
+  "employee": [
+    {
+      "Name": "Kumar dgv",
+      "EmployeeNo": "123",
+      "ContactNo": "9334875155",
+      "EmailId": "kumar@gmail.com",
+      "Address": "ashok vihar",
+      "id": 1
+    },
+    {
+      "Name": "Rohit",
+      "EmployeeNo": "123456",
+      "ContactNo": "1234567890",
+      "EmailId": "rohit@gmail.com",
+      "Address": "Faridabad",
+      "id": 3
+    },
+    {
+      "Name": "Abhishek",
+      "EmployeeNo": "122356464",
+      "ContactNo": "15464565466464",
+      "EmailId": "abhi@123",
+      "Address": "sdjncdkjs",
+      "id": 4
+    },
+    {
+      "Name": "Ankush",
+      "EmployeeNo": "2135436",
+      "ContactNo": "1534354625465",
+      "EmailId": "Ankush@122",
+      "Address": "sdfd",
+      "id": 5
+    },
+    {
+      "Name": "Ram",
+      "EmployeeNo": "45436",
+      "ContactNo": "21325135646354",
+      "EmailId": "ram@1212",
+      "Address": "gjk",
+      "id": 6
+    }
+  ],
+  "users": [
+    {
+      "UserName": "Kumar",
+      "Email": "kumar@123",
+      "Password": "123456",
+      "ConfirmPassword": "123456",
+      "role": "admin",
+      "active": true,
+      "id": 6
+    },
+    {
+      "UserName": "Rohit",
+      "Email": "rohit@gmail.com",
+      "Password": "123456789",
+      "ConfirmPassword": "123456789",
+      "role": "user",
+      "active": false,
+      "id": 7,
+      "isSelected": false
+    },
+    {
+      "UserName": "Abhishek",
+      "Email": "abhi@123",
+      "Password": "123456",
+      "ConfirmPassword": "123456",
+      "role": "user",
+      "active": true,
+      "id": 8,
+      "isSelected": true
+    },
+    {
+      "UserName": "Ankush",
+      "Email": "Ankush@gmail.com",
+      "Password": "123456789",
+      "ConfirmPassword": "123456789",
+      "role": "user",
+      "active": true,
+      "id": 9,
+      "isSelected": true
+    },
+    {
+      "UserName": "Ram",
+      "Email": "Ram@gmail.com",
+      "Password": "123456789",
+      "ConfirmPassword": "123456789",
+      "role": "user",
+      "active": true,
+      "id": 10,
+      "isSelected": true
+    },
+    {
+      "UserName": "Shekhar",
+      "Email": "shej@ghf",
+      "Password": "123456",
+      "ConfirmPassword": "123456",
+      "role": "user",
+      "active": true,
+      "id": 11,
+      "isSelected": true
+    }
+  ]
+}

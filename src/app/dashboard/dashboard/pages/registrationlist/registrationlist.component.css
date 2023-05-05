@@ -1,0 +1,16 @@
+.table-container{
+    padding: 15px;
+    margin :0 auto;
+    max-width: fit-content;
+}
+th{
+    text-align:center
+}
+.mat-select-content{
+    width:100%;
+    background-color: red;
+    font-size: 10px;
+}
+.selected-row {
+    background-color: #c53333; /* set your desired color here */
+  }

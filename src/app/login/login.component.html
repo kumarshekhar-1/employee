@@ -1,0 +1,31 @@
+<mat-card>
+    <div><mat-toolbar>Login</mat-toolbar></div>
+ <mat-divider></mat-divider>
+<mat-card-content>
+
+
+    <form [formGroup]="LoginForm" (ngSubmit)="Login()">
+        <mat-form-field >
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" formControlName="UserName" />
+          <mat-icon  matSuffix >supervised_user_circle</mat-icon>
+        </mat-form-field><mat-divider [vertical]="true"></mat-divider>
+        <mat-form-field >
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="show ? 'text' : 'password'"
+            placeholder="Password"
+            formControlName="Password"
+          /> 
+          <mat-icon matSuffix (click)="showpassword()">remove_red_eye</mat-icon>
+        </mat-form-field>
+      
+        <mat-divider></mat-divider>
+        <button mat-raised-button type="submit">Login</button>&nbsp;&nbsp;
+        <mat-divider></mat-divider>
+        <span>NEW USER?</span>
+        <button mat-raised-button [routerLink]="['/register']">Register</button>
+    </form>
+</mat-card-content>
+</mat-card>
