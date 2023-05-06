@@ -22,6 +22,12 @@
 
          <mat-table  [dataSource]="datasource"
           >
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef  >Id</th>
+            <td mat-cell *matCellDef="let row">
+              {{row.id}}
+            </td>
+          </ng-container>
             <!-- Emp Name Column -->
             <ng-container matColumnDef="firstName">
               <th mat-header-cell *matHeaderCellDef  >FirstName</th>
@@ -38,19 +44,12 @@
             </ng-container>
             <!-- Phone No. Column -->
             <ng-container matColumnDef="emailId">
-              <th mat-header-cell *matHeaderCellDef  >emailId</th>
+              <th mat-header-cell *matHeaderCellDef  >Email</th>
               <td mat-cell *matCellDef="let row">
                 {{row.emailId}}
               </td>
             </ng-container>
-            <!-- Email Column -->
-            <ng-container matColumnDef="EmailId">
-              <th mat-header-cell *matHeaderCellDef  >Email</th>
-              <td mat-cell *matCellDef="let row">
-                {{row.EmailId}}
-              </td>
-            </ng-container>
-
+           
             <ng-container matColumnDef="phoneNumber">
               <th mat-header-cell *matHeaderCellDef  >phoneNumber</th>
               <td mat-cell *matCellDef="let row">
@@ -59,11 +58,11 @@
             </ng-container>
           
             <ng-container    matColumnDef="Action" >
-              <th mat-header-cell *matHeaderCellDef   >Action</th>
+              <th mat-header-cell *matHeaderCellDef  >Action</th>
               <td mat-cell *matCellDef="let row">
-              <button mat-raised-button (click)="edit( row)"><mat-icon>edit</mat-icon></button>
+              <button mat-raised-button (click)="edit( row)"  [disabled]="disabled" ><mat-icon>edit</mat-icon></button>
               &nbsp;&nbsp;
-              <button mat-raised-button (click)="ondelete(row.id)"><mat-icon>delete</mat-icon></button>
+              <button mat-raised-button (click)="ondelete(row.id)"  [disabled]="disabled" ><mat-icon>delete</mat-icon></button>
               </td>
             </ng-container>
           

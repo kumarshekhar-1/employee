@@ -46,7 +46,7 @@ export class EpmloyeepageComponent implements OnInit {
   ngOnInit(): void {
     this.getlist();
     this.username=JSON.parse(localStorage.getItem('userdata')).UserName
-    this.role=this.suth.role
+    // this.role=this.suth.role
     
   }
   

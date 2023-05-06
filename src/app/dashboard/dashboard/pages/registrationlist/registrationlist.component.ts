@@ -10,11 +10,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegistrationlistComponent implements OnInit{
  
 displayedColumns: string[] = [
-  'UserName',
+  'id',
+  'username',
   'Email',
   'role',
-  'Status',
-  'Action'
+  
 ];
 // rolechange
 // rowchange
@@ -40,37 +40,40 @@ displayedColumns: string[] = [
    
  
 
-update(id,row)
-{let data={...row}
-  this.service.updatstatus(id,data).subscribe(data=>{
+// update(id,row)
+// {let data={...row}
+//   this.service.updatstatus(id,data).subscribe(data=>{
   
-  console.log(data)
+//   console.log(data)
   
-})}
+// })}
 
-ondelete(id) {
-  this.service.delete(id).subscribe()
-   this.getlist()
+// ondelete(id) {
+//   this.service.delete(id).subscribe()
+//    this.getlist()
 
 
 
-}
-rol
+// }
+// rol
 search
 datasource: MatTableDataSource<any>;
 
  constructor(private service:AuthService){}
  ngOnInit(): void {
      this.getlist()
-     this.rol=this.service.role
      }
 
 
  
  getlist(){
-  this.service.getregistrationlist().subscribe((data:any)=>{
-    this.datasource=new MatTableDataSource(data)
-    console.log(data)})
+  this.service.user.subscribe((data:any)=>{
+     const list=[{id:data.id,username:data.username,
+     Email:data.Email,
+     role:data.role}]
+   
+     this.datasource=new MatTableDataSource(list)
+  })
     
  }
  Search(issearch: boolean) {

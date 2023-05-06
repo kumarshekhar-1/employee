@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,13 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'employee';
-  constructor(private auth:AuthService){}
+
+  constructor(private auth:AuthService,private route:Router ){}
   ngOnInit(): void {
      this.auth.autologin()
+     this.auth.user.subscribe(()=>{
+       this.route.navigate(['/dashboard'])
+     })
+    
   }
 }

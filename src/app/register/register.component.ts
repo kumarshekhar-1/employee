@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { Register } from '../modal/employee.model';
 
 @Component({
   selector: 'app-register',
@@ -10,42 +11,51 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   constructor(private authservice:AuthService,private route:Router){}
+  roles=['mod','user','admin']
+  selectedrole
+  show=false;
   showpassword() {
     this.show =!this.show
     }
-    show=false;
+   
    
    RegisterForm: FormGroup<any>;
     ngOnInit(): void {
     this.formintiation()
     }
+
     formintiation()
     {
        this.RegisterForm=new FormGroup({
-        UserName : new FormControl(null,[Validators.required]),
+        Username : new FormControl(null,[Validators.required]),
         Email : new FormControl(null,[Validators.required,Validators.email]),
         Password :new FormControl(null,[Validators.required,Validators.minLength(6)]),
         ConfirmPassword: new FormControl(null,[Validators.required,this.matchingPasswordsValidator.bind(this)]),
-        role :new FormControl('Not Assigned'),
-        active:new FormControl(false)
+        Role :new FormControl(this.selectedrole,[Validators.required]),
+        
         
        }
        )
     }
+
+  
     Register() {
     if(this.RegisterForm.valid)
-    {
-     this.authservice.registeruser(this.RegisterForm.value).subscribe( data=>{  console.log(data)
-     this.route.navigate(['/login'])}
-    
-     
- )}
- else
- {
-  this.authservice.openSnackBar('Please Enter the Valid Credential');
- }
-
+    { 
+      const user={username:this.RegisterForm.value.Username,email:this.RegisterForm.value.Email,password:this.RegisterForm.value.Password,role:this.selectedrole}
+      console.log(user)
+     this.authservice.registeruser(user).subscribe( (data)=>{  console.log(data['message'])
+      const d=data
+      this.authservice.openSnackBar(data['message']);
+     this.route.navigate(['/login'])},
+     error=>{this.authservice.openSnackBar(error.error.message);
+    this.RegisterForm.reset()})
     }
+   else
+   {
+  this.authservice.openSnackBar('Please Enter the Valid Credential');
+   }
+  }
     matchingPasswordsValidator(control: AbstractControl) {
       const password = control.parent?.get('Password');
       const confirmPassword = control.value;

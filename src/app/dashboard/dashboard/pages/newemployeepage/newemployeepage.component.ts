@@ -6,6 +6,7 @@ import { EmployeelocalserviceService } from 'src/app/services/employeelocalservi
 import { EpmloyeformComponent } from '../epmloyeform/epmloyeform.component';
 import { EmployeeserviceService } from 'src/app/services/employeeservice.service';
 import { NewemployeeformComponent } from '../newemployeeform/newemployeeform.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-newemployeepage',
@@ -17,20 +18,33 @@ export class NewemployeepageComponent implements OnInit {
   datasource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = [
+    "id",
     "firstName",
     "lastName",
     "emailId",
     "phoneNumber",
     "Action"
+    
   ];
-
+  disabled
+  role:string[]
   constructor(
     private dialog: MatDialog,
-    private service: EmployeeserviceService
+    private service: EmployeeserviceService,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
     this.getlist();
+    this.auth.user.subscribe((data)=>{
+      this.role=data.role})
+      if(this.role.includes('ROLE_ADMIN') || this.role.includes('ROLE_MODERATOR'))
+      {
+        this.disabled=false
+      }
+      else{
+        this.disabled=true
+      }
   }
 
   getlist() {
@@ -61,8 +75,13 @@ export class NewemployeepageComponent implements OnInit {
     this.datasource.filter = filterValue.trim().toLowerCase();
   }
   ondelete(id: number) {
+    const agree=window.confirm("confirmed to delete")
+    if(agree)
+    {
     this.service.deleteemployee(id).subscribe({
       next: (data) => this.getlist(),
     });
   }
+  
+}
 }

@@ -7,7 +7,7 @@
     <form [formGroup]="LoginForm" (ngSubmit)="Login()">
         <mat-form-field >
           <mat-label>Username</mat-label>
-          <input matInput placeholder="Username" formControlName="UserName" />
+          <input matInput placeholder="Username" formControlName="username" />
           <mat-icon  matSuffix >supervised_user_circle</mat-icon>
         </mat-form-field><mat-divider [vertical]="true"></mat-divider>
         <mat-form-field >
@@ -16,7 +16,7 @@
             matInput
             [type]="show ? 'text' : 'password'"
             placeholder="Password"
-            formControlName="Password"
+            formControlName="password"
           /> 
           <mat-icon matSuffix (click)="showpassword()">remove_red_eye</mat-icon>
         </mat-form-field>
